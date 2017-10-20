@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnSearche;
     private Button btnEdit;
     private EditText etNumber;
-    private TextView tvShowResult;
+    public static TextView tvShowResult;
     private MainActivityFragment mainActivityFragment = new MainActivityFragment();
 
     @Override

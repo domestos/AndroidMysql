@@ -22,12 +22,10 @@ import java.util.List;
 public class MainActivityFragment extends android.app.Fragment {
 
     private JSONParser jsonParser = new JSONParser();
-
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCT = "product";
-    private static final String TAG_ID = "id";
-    private static final String TAG_NUMBER = "number";
     String TAG_LOG ="TAG_LOG";
+
 
     public void runAsincTask(String searcheNumber) {
        new MainActivityFragmentATask().execute(searcheNumber);
@@ -55,16 +53,20 @@ public class MainActivityFragment extends android.app.Fragment {
                     productObj = json.getJSONArray(TAG_PRODUCT);
                     JSONObject product = productObj.getJSONObject(0);
                     Log.d(TAG_LOG, "product= "+ product);
+                   return   product.toString();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
             return null;
          }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            MainActivity.tvShowResult.setText(s);
+
         }
     } //end Async Task
 }
